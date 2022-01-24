@@ -1,0 +1,87 @@
+﻿<Page x:Class="Genius_Business.MainPages.Pàgines.FichaProducto"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Genius_Business.MainPages.Pàgines"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FichaProducto"  xmlns:language="clr-namespace:Genius_Business.Resources" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="8*"/>
+
+
+
+
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="..\..\Assets\Images\installator-wallpaper.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Label  Grid.ColumnSpan="2" Background="Gray" Foreground="Azure" Content="{x:Static language:Multilanguage.SeleccionarImagen}"  Grid.RowSpan="2"   HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <Label Grid.ColumnSpan="2"          Background="Gray" Foreground="Azure" Grid.Row="2"  Grid.RowSpan="1" HorizontalAlignment="Center" Content="{x:Static language:Multilanguage.SeleccionarTienda}"  VerticalAlignment="Center"/>
+        <Label Grid.ColumnSpan="2"  Background="Gray" Foreground="Azure" Grid.Row="3"  HorizontalAlignment="Center" Grid.RowSpan="1" Content="{x:Static language:Multilanguage.Nombreproducto}" VerticalAlignment="Center"/>
+        <Label Grid.ColumnSpan="2"  Background="Gray" Foreground="Azure" Grid.Row="4" Content="{x:Static language:Multilanguage.Stock}"   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.ColumnSpan="2"  Background="Gray" Foreground="Azure" Grid.Row="5" Grid.RowSpan="1" Content="{x:Static language:Multilanguage.unidad}"   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label  Grid.ColumnSpan="2" Background="Gray" Foreground="Azure" Grid.Row="6" Content="{x:Static language:Multilanguage.CosteFabricación}"   HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Label  Grid.ColumnSpan="2" Background="Gray" Foreground="Azure" Grid.Row="7" Content="{x:Static language:Multilanguage.Costeproducto}"   HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Label Background="Gray" Foreground="Azure" Grid.Row="8"  Content="{x:Static language:Multilanguage.Precio_unidad}"   HorizontalAlignment="Center" VerticalAlignment="Center" 
+/>
+        <Label  Grid.ColumnSpan="2" Background="Gray" Foreground="Azure" Grid.Row="9"  Content="{x:Static language:Multilanguage.Porcentaje_iva}"   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Button  Padding="1" Margin="20,20,0,0" HorizontalAlignment="Center" Grid.ColumnSpan="2"   VerticalAlignment="Center" Width="75" Content="{x:Static language:Multilanguage.Examinar}" Grid.Row="0" Grid.Column="2" x:Name="ExamnarProducto" Click="ExamnarProducto_Click"></Button>
+        <TextBox Margin="7,0.4,6.6,7.4" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2"  Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="Pr_Imagen"></TextBox>
+        <ComboBox Margin="00,7,0,7" Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  x:Name="Pr_tienda"></ComboBox>
+        <TextBox Margin="00,7,0,7" Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="Pr_nombreproducto"></TextBox>
+        <TextBox Margin="00,7,0,7" Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="Pr_stock"></TextBox>
+        <TextBox Margin="00,7,0,7" Grid.Row="6" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="Pr_costefabricacion"></TextBox>
+        <TextBox Margin="00,7,0,7" Grid.Row="7" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="Pr_costeproducto"></TextBox>
+        <TextBox Margin="00,7,0,7" Grid.Row="8" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="Pr_precioproducto"></TextBox>
+        <ComboBox Margin="00,10,0,10" Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  x:Name="Pr_unidad" SelectionChanged="Pr_unidad_SelectionChanged">
+            <ComboBoxItem Content="unidad" Tag="unidad" IsSelected="True" HorizontalContentAlignment="Center" />
+            <ComboBoxItem Content="kg" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Content="g" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Content="L" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Content="mL" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Content="Moneda" HorizontalContentAlignment="Center"/> ç
+            <ComboBoxItem Content="Plazo" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Content="Moneda" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Content="Otros" HorizontalContentAlignment="Center"/>
+        </ComboBox>
+
+        <TextBox Margin="00,7,0,7" Grid.Row="9" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="Pr_iva"></TextBox>
+        <Button Background="#fe553e" Margin="7.4,8.8,0.2,7.4" Padding="5" HorizontalAlignment="Center" Grid.RowSpan="2" VerticalAlignment="Center" Width="122" Content="{x:Static language:Multilanguage.EditarProducto}" Grid.Row="8" Grid.Column="6" FontWeight="Bold" x:Name="ModificarProducto" Click="ModificarProducto_Click" Height="27" Grid.ColumnSpan="2"/>
+        <Button Background="#3e55fe" Margin="7.4,8.8,0.2,7.4" Padding="5" HorizontalAlignment="Center" Grid.RowSpan="2" VerticalAlignment="Center" Width="122" Content="{x:Static language:Multilanguage.Cancelar}" Grid.Row="8" Grid.Column="8" FontWeight="Bold" x:Name="CancelarProducto" Click="CancelarrProducto_Click" Height="27" Grid.ColumnSpan="2"/>
+        <Border BorderThickness="3"  Grid.Row="1" Grid.ColumnSpan="6" Grid.Column="5" Grid.RowSpan="7" HorizontalAlignment="Center"  x:Name="borderimage"
+        BorderBrush="#FF000000"
+        VerticalAlignment="Top">
+            <Image x:Name="image"  HorizontalAlignment="Left" Height="190"  Grid.RowSpan="7" Stretch="Fill" VerticalAlignment="Top"/>
+        </Border>
+    </Grid>
+</Page>

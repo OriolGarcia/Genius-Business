@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="etddatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Codigos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="1000" />
+          <Property Name="uso" Type="nvarchar(max)" />
+          <Property Name="dedicado_a" Type="nvarchar(max)" />
+          <Property Name="CS_Graboboi" Type="bit" />
+          <Property Name="orden" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GbB_cliente">
+          <Key>
+            <PropertyRef Name="cleinte_id" />
+          </Key>
+          <Property Name="cliente_idempresa" Type="bigint" Nullable="false" />
+          <Property Name="cleinte_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venta_fecha" Type="datetime" Nullable="false" />
+          <Property Name="venta_nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="venta_apellidos" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="venta_telefono" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="venta_email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="venta_redessociale" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GbB_materiales">
+          <Key>
+            <PropertyRef Name="material_id" />
+          </Key>
+          <Property Name="material_idempresa" Type="bigint" Nullable="false" />
+          <Property Name="material_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="material_fecha" Type="datetime" Nullable="false" />
+          <Property Name="material_tiendaid" Type="bigint" />
+          <Property Name="material_costeunidad" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="material_imagen" Type="image" />
+          <Property Name="material_stock" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="material_nombre" Type="varchar" MaxLength="150" />
+          <Property Name="material_unidad" Type="varchar" MaxLength="50" />
+          <Property Name="material_costefabricación" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="GbB_productos">
+          <Key>
+            <PropertyRef Name="producto_id" />
+          </Key>
+          <Property Name="producto_idempresa" Type="bigint" Nullable="false" />
+          <Property Name="producto_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="producto_fecha" Type="datetime" Nullable="false" />
+          <Property Name="producto_tiendaid" Type="bigint" />
+          <Property Name="producto_costeunidad" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="producto_preciounidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="producto_ivaporcent" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="producto_imagen" Type="image" />
+          <Property Name="producto_stock" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="producto_nombre" Type="varchar" MaxLength="150" />
+          <Property Name="producto_unidad" Type="varchar" MaxLength="50" />
+          <Property Name="producto_costefabricación" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="producto_codigoproducto" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GbB_Tiendas">
+          <Key>
+            <PropertyRef Name="tienda_id" />
+          </Key>
+          <Property Name="tienda_idempresa" Type="bigint" Nullable="false" />
+          <Property Name="tienda_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tienda_NombreTienda" Type="varchar" MaxLength="100" />
+          <Property Name="tienda_Direccion" Type="varchar" MaxLength="200" />
+          <Property Name="tienda_Población" Type="varchar" MaxLength="200" />
+          <Property Name="tienda_Pais" Type="int" />
+        </EntityType>
+        <EntityType Name="GbB_ventas">
+          <Key>
+            <PropertyRef Name="venta_id" />
+          </Key>
+          <Property Name="venta_idempresa" Type="bigint" Nullable="false" />
+          <Property Name="venta_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venta_fecha" Type="datetime" Nullable="false" />
+          <Property Name="venta_tiendaid" Type="bigint" Nullable="false" />
+          <Property Name="venta_importe" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="venta_idcliente" Type="bigint" />
+        </EntityType>
+        <EntityType Name="GbB_ventasreales">
+          <Key>
+            <PropertyRef Name="ventareal_ventas_id" />
+          </Key>
+          <Property Name="ventareal_idempresa" Type="bigint" Nullable="false" />
+          <Property Name="ventareal_ventas_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ventareal_idproducto" Type="bigint" />
+          <Property Name="ventareal_cantidad" Type="int" />
+          <Property Name="ventareal_costeunidad" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ventarela_costetotal" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_preciounidad" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_descuentounidad" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_total" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_ivaporcent" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_ivaTotal" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="vantareal_totaliva" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GnB_Empresas">
+          <Key>
+            <PropertyRef Name="Empresa_idEmpresa" />
+          </Key>
+          <Property Name="Empresa_idEmpresa" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Empresa" Type="varchar" MaxLength="100" />
+          <Property Name="Emailprincipal" Type="varchar" MaxLength="200" />
+          <Property Name="NumTel" Type="varchar" MaxLength="200" />
+          <Property Name="ContraseñaEmpresa" Type="varchar" MaxLength="200" />
+          <Property Name="Pais" Type="varchar" MaxLength="200" />
+          <Property Name="cuentastrial" Type="int" />
+        </EntityType>
+        <EntityType Name="GnB_EmpresasLicencias">
+          <Key>
+            <PropertyRef Name="Emlc_idlicencia" />
+            <PropertyRef Name="Emlc_idEmpresa" />
+          </Key>
+          <Property Name="Emlc_idlicencia" Type="bigint" Nullable="false" />
+          <Property Name="Emlc_idEmpresa" Type="bigint" Nullable="false" />
+          <Property Name="Nombre_Empresa" Type="varchar" MaxLength="100" />
+          <Property Name="Nombre_Pais" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Licencias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id_App" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="program_key" Type="nvarchar" MaxLength="100" />
+          <Property Name="mac" Type="nvarchar(max)" />
+          <Property Name="limitdate" Type="datetime" />
+          <Property Name="version" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="testing" Type="bit" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="paises_id" />
+          </Key>
+          <Property Name="paises_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paises_pais" Type="varchar" MaxLength="50" />
+          <Property Name="paises_moneda" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="etddatabaseModelStoreContainer">
+          <EntitySet Name="Codigos" EntityType="Self.Codigos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GbB_cliente" EntityType="Self.GbB_cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GbB_materiales" EntityType="Self.GbB_materiales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GbB_productos" EntityType="Self.GbB_productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GbB_Tiendas" EntityType="Self.GbB_Tiendas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GbB_ventas" EntityType="Self.GbB_ventas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GbB_ventasreales" EntityType="Self.GbB_ventasreales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GnB_Empresas" EntityType="Self.GnB_Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GnB_EmpresasLicencias" EntityType="Self.GnB_EmpresasLicencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Licencias" EntityType="Self.Licencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="etddatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Codigos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="uso" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dedicado_a" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CS_Graboboi" Type="Boolean" />
+          <Property Name="orden" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GbB_cliente">
+          <Key>
+            <PropertyRef Name="cleinte_id" />
+          </Key>
+          <Property Name="cliente_idempresa" Type="Int64" Nullable="false" />
+          <Property Name="cleinte_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venta_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="venta_nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="venta_apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="venta_telefono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="venta_email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="venta_redessociale" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GbB_ventas">
+          <Key>
+            <PropertyRef Name="venta_id" />
+          </Key>
+          <Property Name="venta_idempresa" Type="Int64" Nullable="false" />
+          <Property Name="venta_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venta_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="venta_tiendaid" Type="Int64" Nullable="false" />
+          <Property Name="venta_importe" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="venta_idcliente" Type="Int64" />
+        </EntityType>
+        <EntityType Name="GbB_ventasreales">
+          <Key>
+            <PropertyRef Name="ventareal_ventas_id" />
+          </Key>
+          <Property Name="ventareal_idempresa" Type="Int64" Nullable="false" />
+          <Property Name="ventareal_ventas_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ventareal_idproducto" Type="Int64" />
+          <Property Name="ventareal_cantidad" Type="Int32" />
+          <Property Name="ventareal_costeunidad" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ventarela_costetotal" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_preciounidad" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_descuentounidad" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_total" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_ivaporcent" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_ivaTotal" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="vantareal_totaliva" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ventareal_fecha" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="GnB_Empresas">
+          <Key>
+            <PropertyRef Name="Empresa_idEmpresa" />
+          </Key>
+          <Property Name="Empresa_idEmpresa" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Emailprincipal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NumTel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContraseñaEmpresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cuentastrial" Type="Int32" />
+        </EntityType>
+        <EntityType Name="GnB_EmpresasLicencias">
+          <Key>
+            <PropertyRef Name="Emlc_idlicencia" />
+            <PropertyRef Name="Emlc_idEmpresa" />
+          </Key>
+          <Property Name="Emlc_idlicencia" Type="Int64" Nullable="false" />
+          <Property Name="Emlc_idEmpresa" Type="Int64" Nullable="false" />
+          <Property Name="Nombre_Empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Pais" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Licencias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id_App" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="program_key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="mac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="limitdate" Type="DateTime" Precision="3" />
+          <Property Name="version" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="testing" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="etddatabaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Codigos" EntityType="Self.Codigos" />
+          <EntitySet Name="GbB_cliente" EntityType="Self.GbB_cliente" />
+          <EntitySet Name="GbB_ventas" EntityType="Self.GbB_ventas" />
+          <EntitySet Name="GbB_ventasreales" EntityType="Self.GbB_ventasreales" />
+          <EntitySet Name="GnB_Empresas" EntityType="Self.GnB_Empresas" />
+          <EntitySet Name="GnB_EmpresasLicencias" EntityType="Self.GnB_EmpresasLicencias" />
+          <EntitySet Name="Licencias" EntityType="Self.Licencias" />
+          <EntitySet Name="Paises" EntityType="etddatabaseModel.Paises" />
+          <EntitySet Name="GbB_Tiendas" EntityType="etddatabaseModel.GbB_Tiendas" />
+          <EntitySet Name="GbB_productos" EntityType="etddatabaseModel.GbB_productos" />
+          <EntitySet Name="GbB_materiales" EntityType="etddatabaseModel.GbB_materiales" />
+        </EntityContainer>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="paises_id" />
+          </Key>
+          <Property Name="paises_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paises_pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paises_moneda" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GbB_Tiendas">
+          <Key>
+            <PropertyRef Name="tienda_id" />
+          </Key>
+          <Property Name="tienda_idempresa" Type="Int64" Nullable="false" />
+          <Property Name="tienda_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tienda_NombreTienda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tienda_Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tienda_Población" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tienda_Pais" Type="Int32" />
+        </EntityType>
+        <EntityType Name="GbB_productos">
+          <Key>
+            <PropertyRef Name="producto_id" />
+          </Key>
+          <Property Name="producto_idempresa" Type="Int64" Nullable="false" />
+          <Property Name="producto_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="producto_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="producto_tiendaid" Type="Int64" />
+          <Property Name="producto_costeunidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="producto_preciounidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="producto_ivaporcent" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="producto_imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="producto_stock" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="producto_nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="producto_unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="producto_costefabricación" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="producto_codigoproducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GbB_materiales">
+          <Key>
+            <PropertyRef Name="material_id" />
+          </Key>
+          <Property Name="material_idempresa" Type="Int64" Nullable="false" />
+          <Property Name="material_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="material_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="material_tiendaid" Type="Int64" />
+          <Property Name="material_costeunidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="material_imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="material_stock" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="material_nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="material_unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="material_costefabricación" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="etddatabaseModelStoreContainer" CdmEntityContainer="etddatabaseEntities1">
+          <EntitySetMapping Name="Codigos">
+            <EntityTypeMapping TypeName="etddatabaseModel.Codigos">
+              <MappingFragment StoreEntitySet="Codigos">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="uso" ColumnName="uso" />
+                <ScalarProperty Name="dedicado_a" ColumnName="dedicado_a" />
+                <ScalarProperty Name="CS_Graboboi" ColumnName="CS_Graboboi" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GbB_cliente">
+            <EntityTypeMapping TypeName="etddatabaseModel.GbB_cliente">
+              <MappingFragment StoreEntitySet="GbB_cliente">
+                <ScalarProperty Name="cliente_idempresa" ColumnName="cliente_idempresa" />
+                <ScalarProperty Name="cleinte_id" ColumnName="cleinte_id" />
+                <ScalarProperty Name="venta_fecha" ColumnName="venta_fecha" />
+                <ScalarProperty Name="venta_nombre" ColumnName="venta_nombre" />
+                <ScalarProperty Name="venta_apellidos" ColumnName="venta_apellidos" />
+                <ScalarProperty Name="venta_telefono" ColumnName="venta_telefono" />
+                <ScalarProperty Name="venta_email" ColumnName="venta_email" />
+                <ScalarProperty Name="venta_redessociale" ColumnName="venta_redessociale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GbB_ventas">
+            <EntityTypeMapping TypeName="etddatabaseModel.GbB_ventas">
+              <MappingFragment StoreEntitySet="GbB_ventas">
+                <ScalarProperty Name="venta_idempresa" ColumnName="venta_idempresa" />
+                <ScalarProperty Name="venta_id" ColumnName="venta_id" />
+                <ScalarProperty Name="venta_fecha" ColumnName="venta_fecha" />
+                <ScalarProperty Name="venta_tiendaid" ColumnName="venta_tiendaid" />
+                <ScalarProperty Name="venta_importe" ColumnName="venta_importe" />
+                <ScalarProperty Name="venta_idcliente" ColumnName="venta_idcliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GbB_ventasreales">
+            <EntityTypeMapping TypeName="etddatabaseModel.GbB_ventasreales">
+              <MappingFragment StoreEntitySet="GbB_ventasreales">
+                <ScalarProperty Name="ventareal_idempresa" ColumnName="ventareal_idempresa" />
+                <ScalarProperty Name="ventareal_ventas_id" ColumnName="ventareal_ventas_id" />
+                <ScalarProperty Name="ventareal_idproducto" ColumnName="ventareal_idproducto" />
+                <ScalarProperty Name="ventareal_cantidad" ColumnName="ventareal_cantidad" />
+                <ScalarProperty Name="ventareal_costeunidad" ColumnName="ventareal_costeunidad" />
+                <ScalarProperty Name="ventarela_costetotal" ColumnName="ventarela_costetotal" />
+                <ScalarProperty Name="ventareal_preciounidad" ColumnName="ventareal_preciounidad" />
+                <ScalarProperty Name="ventareal_descuentounidad" ColumnName="ventareal_descuentounidad" />
+                <ScalarProperty Name="ventareal_total" ColumnName="ventareal_total" />
+                <ScalarProperty Name="ventareal_ivaporcent" ColumnName="ventareal_ivaporcent" />
+                <ScalarProperty Name="ventareal_ivaTotal" ColumnName="ventareal_ivaTotal" />
+                <ScalarProperty Name="vantareal_totaliva" ColumnName="vantareal_totaliva" />
+                <ScalarProperty Name="ventareal_fecha" ColumnName="ventareal_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GnB_Empresas">
+            <EntityTypeMapping TypeName="etddatabaseModel.GnB_Empresas">
+              <MappingFragment StoreEntitySet="GnB_Empresas">
+                <ScalarProperty Name="cuentastrial" ColumnName="cuentastrial" />
+                <ScalarProperty Name="Empresa_idEmpresa" ColumnName="Empresa_idEmpresa" />
+                <ScalarProperty Name="Nombre_Empresa" ColumnName="Nombre_Empresa" />
+                <ScalarProperty Name="Emailprincipal" ColumnName="Emailprincipal" />
+                <ScalarProperty Name="NumTel" ColumnName="NumTel" />
+                <ScalarProperty Name="ContraseñaEmpresa" ColumnName="ContraseñaEmpresa" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GnB_EmpresasLicencias">
+            <EntityTypeMapping TypeName="etddatabaseModel.GnB_EmpresasLicencias">
+              <MappingFragment StoreEntitySet="GnB_EmpresasLicencias">
+                <ScalarProperty Name="Emlc_idlicencia" ColumnName="Emlc_idlicencia" />
+                <ScalarProperty Name="Emlc_idEmpresa" ColumnName="Emlc_idEmpresa" />
+                <ScalarProperty Name="Nombre_Empresa" ColumnName="Nombre_Empresa" />
+                <ScalarProperty Name="Nombre_Pais" ColumnName="Nombre_Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Licencias">
+            <EntityTypeMapping TypeName="etddatabaseModel.Licencias">
+              <MappingFragment StoreEntitySet="Licencias">
+                <ScalarProperty Name="testing" ColumnName="testing" />
+                <ScalarProperty Name="id_App" ColumnName="id_App" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="program_key" ColumnName="program_key" />
+                <ScalarProperty Name="mac" ColumnName="mac" />
+                <ScalarProperty Name="limitdate" ColumnName="limitdate" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="etddatabaseModel.Paises">
+              <MappingFragment StoreEntitySet="Paises">
+                <ScalarProperty Name="paises_moneda" ColumnName="paises_moneda" />
+                <ScalarProperty Name="paises_pais" ColumnName="paises_pais" />
+                <ScalarProperty Name="paises_id" ColumnName="paises_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GbB_Tiendas">
+            <EntityTypeMapping TypeName="etddatabaseModel.GbB_Tiendas">
+              <MappingFragment StoreEntitySet="GbB_Tiendas">
+                <ScalarProperty Name="tienda_Pais" ColumnName="tienda_Pais" />
+                <ScalarProperty Name="tienda_Población" ColumnName="tienda_Población" />
+                <ScalarProperty Name="tienda_Direccion" ColumnName="tienda_Direccion" />
+                <ScalarProperty Name="tienda_NombreTienda" ColumnName="tienda_NombreTienda" />
+                <ScalarProperty Name="tienda_id" ColumnName="tienda_id" />
+                <ScalarProperty Name="tienda_idempresa" ColumnName="tienda_idempresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GbB_productos">
+            <EntityTypeMapping TypeName="etddatabaseModel.GbB_productos">
+              <MappingFragment StoreEntitySet="GbB_productos">
+                <ScalarProperty Name="producto_codigoproducto" ColumnName="producto_codigoproducto" />
+                <ScalarProperty Name="producto_costefabricación" ColumnName="producto_costefabricación" />
+                <ScalarProperty Name="producto_unidad" ColumnName="producto_unidad" />
+                <ScalarProperty Name="producto_nombre" ColumnName="producto_nombre" />
+                <ScalarProperty Name="producto_stock" ColumnName="producto_stock" />
+                <ScalarProperty Name="producto_imagen" ColumnName="producto_imagen" />
+                <ScalarProperty Name="producto_ivaporcent" ColumnName="producto_ivaporcent" />
+                <ScalarProperty Name="producto_preciounidad" ColumnName="producto_preciounidad" />
+                <ScalarProperty Name="producto_costeunidad" ColumnName="producto_costeunidad" />
+                <ScalarProperty Name="producto_tiendaid" ColumnName="producto_tiendaid" />
+                <ScalarProperty Name="producto_fecha" ColumnName="producto_fecha" />
+                <ScalarProperty Name="producto_id" ColumnName="producto_id" />
+                <ScalarProperty Name="producto_idempresa" ColumnName="producto_idempresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GbB_materiales">
+            <EntityTypeMapping TypeName="etddatabaseModel.GbB_materiales">
+              <MappingFragment StoreEntitySet="GbB_materiales">
+                <ScalarProperty Name="material_costefabricación" ColumnName="material_costefabricación" />
+                <ScalarProperty Name="material_unidad" ColumnName="material_unidad" />
+                <ScalarProperty Name="material_nombre" ColumnName="material_nombre" />
+                <ScalarProperty Name="material_stock" ColumnName="material_stock" />
+                <ScalarProperty Name="material_imagen" ColumnName="material_imagen" />
+                <ScalarProperty Name="material_costeunidad" ColumnName="material_costeunidad" />
+                <ScalarProperty Name="material_tiendaid" ColumnName="material_tiendaid" />
+                <ScalarProperty Name="material_fecha" ColumnName="material_fecha" />
+                <ScalarProperty Name="material_id" ColumnName="material_id" />
+                <ScalarProperty Name="material_idempresa" ColumnName="material_idempresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
